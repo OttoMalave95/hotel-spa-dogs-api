@@ -15,8 +15,8 @@ module.exports = {
       });
   },
 
-  async obtenerPerro(id) {
-    return Perro.findById(id)
+  async obtenerPerro(cedula, nombre) {
+    return Perro.findOne({ cedula: cedula, nombre: nombre })
       .then(perro => {
         return perro;
       })
@@ -41,8 +41,8 @@ module.exports = {
       });
   },
 
-  async obtenerHotel(id) {
-    return Hotel.findById(id)
+  async obtenerHotel(rif) {
+    return Hotel.findOne({ rif: rif })
       .then(hotel => {
         return hotel;
       })
