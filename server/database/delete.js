@@ -1,20 +1,31 @@
-const mongoose = require('./config/mongoose-module');
-var Proyecto = require('./models/proyecto');
+const Hotel = require('./models/hotel');
+const Perro = require('./models/perro');
 
 module.exports = {
-	async eliminarProyecto(proyecto) {
-		if(proyecto.id) var id = proyecto.id;
-    if(proyecto._id) var id = proyecto._id;
-	  
-	  return Proyecto.findOneAndDelete({ _id: id})
-	    .then(proyecto => {
+	async eliminarPerro(perroId) {
+		return Perro.findOneAndDelete({ _id: perroId})
+	    .then(perro => {
 	      return {
-	        message: "Proyecto eliminado"
+	        message: "Perro eliminado"
 	      };
 	    })
 	    .catch(err => {
 	      return {
-	        message: "Error al eliminar el proyecto"
+	        message: "Error al eliminar el perro"
+	      };
+	    });
+	},
+
+	async eliminarHotel(hotelId) {
+		return Hotel.findOneAndDelete({ _id: hotelId})
+	    .then(hotel => {
+	      return {
+	        message: "Hotel eliminado"
+	      };
+	    })
+	    .catch(err => {
+	      return {
+	        message: "Error al eliminar el hotel"
 	      };
 	    });
 	}
