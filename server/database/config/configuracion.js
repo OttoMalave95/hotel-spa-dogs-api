@@ -1,4 +1,4 @@
 module.exports = {
-    secret: "Registro de proyectos de construccion -- Sistemas Distribuidos HASHFALSO=Xcs2!Sm34slKsm-sLsk2.aq!d",
-    database: "mongodb://otto:ottoantonio95@ds147233.mlab.com:47233/projects",
+    secret: "=Xcs2!Sm34slKsm-sLsk2.aq!d",
+    database: "mongodb://admin:admin123@ds263018.mlab.com:63018/hotel-spa-dogs",
 }
