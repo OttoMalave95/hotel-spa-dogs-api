@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var Perro = new Schema({
+const Perro = new Schema({
   cedula: String,
   nombre: String,
   especie: String,
