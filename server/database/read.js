@@ -1,40 +1,56 @@
-var mongoose = require("./config/mongoose-module");
-var Proyecto = require("./models/proyecto");
+const Hotel = require('./models/hotel');
+const Perro = require('./models/perro');
 
 module.exports = {
-
-  async obtenerProyecto(id) {
-    return Proyecto.findOne({ _id: id})
-      .then(proyecto => {
-        if (!proyecto) throw err;
-        return proyecto;
+  async obtenerPerros() {
+    return Perro.find()
+      .then(perros => {
+        return perros;
       })
       .catch(() => {
         return {
           status: 404,
-          message: "proyecto no encontrado"
+          message: "No existen perros"
         };
       });
   },
 
-  async obtenerProyectos() {
-    return Proyecto.find()
-      .then(proyectos => {
-        if (!proyectos) {
-          throw err;
-          console.log('proyectos: ', proyectos);
-        } else {
-          return proyectos;
-          console.log('proyectos: ', proyectos);
-        }
-          
+  async obtenerPerro(id) {
+    return Perro.findById(id)
+      .then(perro => {
+        return perro;
       })
       .catch(() => {
         return {
           status: 404,
-          message: "no existen proyectos"
+          message: "perro no encontrado"
         };
       });
   },
 
+  async obtenerHoteles() {
+    return Hotel.find()
+      .then(hoteles => {
+        return hoteles;
+      })
+      .catch(() => {
+        return {
+          status: 404,
+          message: "No existen hoteles"
+        };
+      });
+  },
+
+  async obtenerHotel(id) {
+    return Hotel.findById(id)
+      .then(hotel => {
+        return hotel;
+      })
+      .catch(() => {
+        return {
+          status: 404,
+          message: "hotel no encontrado"
+        };
+      });
+  }
 };
