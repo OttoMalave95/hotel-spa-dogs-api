@@ -1,29 +1,22 @@
-const mongoose = require('./config/mongoose-module');
-var Proyecto = require('./models/proyecto');
-module.exports = {
+const Hotel = require('./models/hotel');
+const Perro = require('./models/perro');
 
-  async nuevoProyecto(proyecto) {
-    
-    const nuevoProyecto = new Proyecto({
-      '_id': new mongoose.Types.ObjectId(),
-      'titulo': proyecto['titulo'],
-      'objetivo': proyecto['objetivo'],
-      'tipo_proyecto': proyecto['tipo_proyecto'],
-      'presupuesto':proyecto['presupuesto'],
-      'materiales': proyecto['materiales'],
-      'duracion': proyecto['duracion'],
-      'responsable':{
-        'nombre': proyecto['nombre'],
-        'apellido': proyecto['apellido'],
-        'cedula': proyecto['cedula'],
-        'correo_electronico': proyecto['correo_electronico'],
-      }
+module.exports = {
+  async crearPerro(perro) {
+    const nuevoPerro = new Perro({
+      cedula: perro['cedula'],
+      nombre: perro['nombre'],
+      especie: perro['especie'],
+      sexo: perro['sexo'],
+      raza: perro['raza'],
+      color: perro['color'],
+      registros: perro['registros']
     })
-    return nuevoProyecto.save()
-    .then((proyecto) => {
+    return nuevoPerro.save()
+    .then((perro) => {
       return {
-        proyecto: proyecto,
-        message: "Se registro el proyecto satisfactoriamente"
+        perro: perro,
+        message: "Se registro el perro satisfactoriamente"
       };
     })
     .catch((err) => {
@@ -34,4 +27,31 @@ module.exports = {
       }
     })
   },
+
+  async crearHotel(hotel) {
+    const nuevoHotel = new Hotel({
+      nombre: hotel['nombre'],
+      rif: hotel['rif'],
+      habitaciones: [],
+      spa: {
+        baño: [],
+        peluqueria: [],
+        manicura: []
+      }
+    })
+    return nuevoHotel.save()
+    .then((hotel) => {
+      return {
+        hotel: hotel,
+        message: "Se registro el hotel satisfactoriamente"
+      };
+    })
+    .catch((err) => {
+      throw {
+        status: 500,
+        success: false,
+        message: err.message,
+      }
+    })
+  }
 }
