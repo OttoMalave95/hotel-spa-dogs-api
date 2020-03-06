@@ -69,7 +69,7 @@ module.exports = {
       throw {
         status: 500,
         success: false,
-        message: "Perro no resgistrado",
+        message: "Perro no registrado",
       }
     }
 
