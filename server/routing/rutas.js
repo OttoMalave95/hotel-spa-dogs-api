@@ -59,8 +59,8 @@ api.route("/spa/asignar-manicura-perro").put((req, res) => {
     });
 });
 
-api.route("/retirar-perro").put((req, res) => {
-  update.retirarPerro(req.body)
+api.route("/retirar-perro").delete((req, res) => {
+  remove.retirarPerro(req.body)
     .then((data) => {
       res.send(data);
     })
