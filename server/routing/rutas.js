@@ -29,8 +29,38 @@ api.route("/hotel/asignar-habitacion-perro").put((req, res) => {
     });
 });
 
-api.route("/hotel/retirar-perro").put((req, res) => {
+api.route("/retirar-perro").put((req, res) => {
   update.retirarPerro(req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(err.status).send(err);
+    });
+});
+
+api.route("/sitios-ocupados").get((req, res) => {
+  read.obtenerSitiosOcupados()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(err.status).send(err);
+    });
+});
+
+api.route("/cantidad-registros").get((req, res) => {
+  read.cantidadRegistrosPerro(req.query)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(err.status).send(err);
+    });
+});
+
+api.route("/listado-perros").get((req, res) => {
+  read.ListadoPerros()
     .then((data) => {
       res.send(data);
     })
