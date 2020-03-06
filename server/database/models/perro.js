@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const Perro = new Schema({
   cedula: String,
   nombre: String,
-  especie: String,
   sexo: String,
   raza: String,
   color: String,

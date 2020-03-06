@@ -10,7 +10,6 @@ module.exports = {
 
       if (perro["cedula"]) data["cedula"] = perro["cedula"];
       if (perro["nombre"]) data["nombre"] = perro["nombre"];
-      if (perro["especie"]) data["especie"] = perro["especie"];
       if (perro["sexo"]) data["sexo"] = perro["sexo"];
       if (perro["raza"]) data["raza"] = perro["raza"];
       if (perro["color"]) data["color"] = perro["color"];

@@ -6,7 +6,6 @@ module.exports = {
     const nuevoPerro = new Perro({
       cedula: perro['cedula'],
       nombre: perro['nombre'],
-      especie: perro['especie'],
       sexo: perro['sexo'],
       raza: perro['raza'],
       color: perro['color'],
