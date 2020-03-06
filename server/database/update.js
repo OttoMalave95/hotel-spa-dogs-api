@@ -55,7 +55,7 @@ module.exports = {
           habitacion['perro'] = perro;
           habitacion['disponible'] = false;
           perro_asignado = true;
-          break;
+          return true;
         }
       });
 
@@ -147,7 +147,7 @@ module.exports = {
           item['perro'] = perro;
           item['disponible'] = false;
           perro_asignado = true;
-          break;
+          return true;
         }
       });
 
@@ -239,7 +239,7 @@ module.exports = {
           item['perro'] = perro;
           item['disponible'] = false;
           perro_asignado = true;
-          break;
+          return true;
         }
       });
 
@@ -331,7 +331,7 @@ module.exports = {
           item['perro'] = perro;
           item['disponible'] = false;
           perro_asignado = true;
-          break;
+          return true;
         }
       });
 
@@ -414,7 +414,7 @@ module.exports = {
           habitacion['perro'] = null;
           habitacion['disponible'] = true;
           perro_registrado = true;
-          break;
+          return true;
         }
       });
     } 
@@ -425,7 +425,7 @@ module.exports = {
           item['perro'] = null;
           item['disponible'] = true;
           perro_registrado = true;
-          break;
+          return true;
         }
       });
     }
@@ -436,7 +436,7 @@ module.exports = {
           item['perro'] = null;
           item['disponible'] = true;
           perro_registrado = true;
-          break;
+          return true;
         }
       });
     }
@@ -447,7 +447,7 @@ module.exports = {
           item['perro'] = null;
           item['disponible'] = true;
           perro_registrado = true;
-          break;
+          return true;
         }
       });
     }
