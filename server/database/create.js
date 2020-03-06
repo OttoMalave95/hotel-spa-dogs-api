@@ -3,19 +3,37 @@ const Perro = require('./models/perro');
 
 module.exports = {
   async crearPerro(perro) {
+    if (Object.keys(perro).length < 5) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Debe ingresar todos los datos",
+      }
+    }
+
+    const perroExiste = await Perro.findOne({ cedula: perro['cedula'], nombre: perro['nombre'] });
+    if (perroExiste) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Perro ya registrado",
+      }
+    }
+
     const nuevoPerro = new Perro({
       cedula: perro['cedula'],
       nombre: perro['nombre'],
       sexo: perro['sexo'],
       raza: perro['raza'],
       color: perro['color'],
-      registros: perro['registros']
-    })
+      registros: 0
+    });
+
     return nuevoPerro.save()
     .then((perro) => {
       return {
         perro: perro,
-        message: "Se registro el perro satisfactoriamente"
+        message: "Perro registrado con exito"
       };
     })
     .catch((err) => {
@@ -28,6 +46,23 @@ module.exports = {
   },
 
   async crearHotel(hotel) {
+    if (Object.keys(hotel).length < 2) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Debe ingresar todos los datos",
+      }
+    }
+
+    const hotelExiste = await Hotel.findOne({ rif: hotel['rif'] });
+    if (hotelExiste) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Hotel ya registrado",
+      }
+    }
+
     const nuevoHotel = new Hotel({
       nombre: hotel['nombre'],
       rif: hotel['rif'],
@@ -37,12 +72,13 @@ module.exports = {
         peluqueria: [],
         manicura: []
       }
-    })
+    });
+
     return nuevoHotel.save()
     .then((hotel) => {
       return {
         hotel: hotel,
-        message: "Se registro el hotel satisfactoriamente"
+        message: "Hotel registrado con exito"
       };
     })
     .catch((err) => {
