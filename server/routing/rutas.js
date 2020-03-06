@@ -10,63 +10,33 @@ api.route("/").get((req, res) => {
   res.send({ message: "Hola Mundo" });
 });
 
-// api.route("/perro").post((req, res) => {
-
-// });
-
-api.route("/proyecto").post((req, res) => {
-  var proyecto = req.body;
-  create.nuevoProyecto(proyecto)
-    .then(data => {
+api.route("/perros").post((req, res) => {
+  create.crearPerro(req.body)
+    .then((data) => {
       res.send(data);
     })
     .catch(err => {
-      res.send({ message: err.message });
-    });
-})
-.get((req, res) => {
-  var proyecto_id = req.query.id;
-  read
-    .obtenerProyecto(proyecto_id)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.send(err);
+      res.status(err.status).send(err);
     });
 });
 
-api.route("/editarProyecto").post((req, res) => {
-  var Proyecto = req.body;
-  update
-    .editarProyecto(Proyecto)
-    .then(data => {
+api.route("/hotel/asignar-habitacion-perro").put((req, res) => {
+  update.asignarHabitacionPerro(req.body)
+    .then((data) => {
       res.send(data);
     })
     .catch(err => {
-      res.send({ message: err.message });
+      res.status(err.status).send(err);
     });
 });
 
-api.route("/eliminarProyecto").post((req, res) => {
-  var Proyecto = req.body;
-  remove
-    .eliminarProyecto(Proyecto)
-    .then(data => {
+api.route("/hotel/retirar-perro").put((req, res) => {
+  update.retirarPerro(req.body)
+    .then((data) => {
       res.send(data);
     })
     .catch(err => {
-      res.send({ message: err.message });
-    });
-})
-
-api.route("/proyectos").get((req, res) => {
-  read.obtenerProyectos()
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.send({ message: err.message });
+      res.status(err.status).send(err);
     });
 });
 
