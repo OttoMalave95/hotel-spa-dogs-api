@@ -5,6 +5,11 @@ var create = require("../database/create");
 var update = require("../database/update");
 var remove = require("../database/delete");
 
+api.route("/").get((req, res) => {
+  console.log('ruta raiz');
+  res.send({ message: "Hola Mundo" });
+});
+
 api.route("/proyecto").post((req, res) => {
   var proyecto = req.body;
   create.nuevoProyecto(proyecto)
