@@ -2,6 +2,7 @@
 const express = require("express");
 const body_parser = require("body-parser");
 const morgan = require("morgan");
+const mongodb = require("./database/config/mongoose-module");
 const rutas_api = require('./routing/rutas');
 
 const app = express();
