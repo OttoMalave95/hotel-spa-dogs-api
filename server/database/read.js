@@ -14,9 +14,9 @@ module.exports = {
     }
 
     const habitaciones = hotel['habitaciones'];
-    const baño = hotel['habitaciones']['spa']['baño'];
-    const peluqueria = hotel['habitaciones']['spa']['peluqueria'];
-    const manicura = hotel['habitaciones']['spa']['manicura'];
+    const baño = hotel['spa']['baño'];
+    const peluqueria = hotel['spa']['peluqueria'];
+    const manicura = hotel['spa']['manicura'];
     let catidad_habitaciones = 0;
     let catidad_baño = 0;
     let catidad_peluqueria = 0;
@@ -95,9 +95,9 @@ module.exports = {
     }
 
     const habitaciones = hotel['habitaciones'];
-    const baño = hotel['habitaciones']['spa']['baño'];
-    const peluqueria = hotel['habitaciones']['spa']['peluqueria'];
-    const manicura = hotel['habitaciones']['spa']['manicura'];
+    const baño = hotel['spa']['baño'];
+    const peluqueria = hotel['spa']['peluqueria'];
+    const manicura = hotel['spa']['manicura'];
 
     if (habitaciones.length) {
       habitaciones.forEach(item => {

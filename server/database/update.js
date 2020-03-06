@@ -127,7 +127,7 @@ module.exports = {
       hotel = nuevo_hotel.hotel;
     }
 
-    const baño = hotel['habitaciones']['spa']['baño'];
+    const baño = hotel['spa']['baño'];
 
     if (baño.length) {
       baño.forEach(item => {
@@ -169,7 +169,7 @@ module.exports = {
     perro.registros += 1;
     await perro.save();
 
-    hotel['habitaciones']['spa']['baño'] = baño;
+    hotel['spa']['baño'] = baño;
 
     return hotel.save()
       .then((data) => {
@@ -219,7 +219,7 @@ module.exports = {
       hotel = nuevo_hotel.hotel;
     }
 
-    const peluqueria = hotel['habitaciones']['spa']['peluqueria'];
+    const peluqueria = hotel['spa']['peluqueria'];
 
     if (peluqueria.length) {
       peluqueria.forEach(item => {
@@ -261,7 +261,7 @@ module.exports = {
     perro.registros += 1;
     await perro.save();
 
-    hotel['habitaciones']['spa']['peluqueria'] = peluqueria;
+    hotel['spa']['peluqueria'] = peluqueria;
 
     return hotel.save()
       .then((data) => {
@@ -311,7 +311,7 @@ module.exports = {
       hotel = nuevo_hotel.hotel;
     }
 
-    const manicura = hotel['habitaciones']['spa']['manicura'];
+    const manicura = hotel['spa']['manicura'];
 
     if (manicura.length) {
       manicura.forEach(item => {
@@ -353,7 +353,7 @@ module.exports = {
     perro.registros += 1;
     await perro.save();
 
-    hotel['habitaciones']['spa']['manicura'] = manicura;
+    hotel['spa']['manicura'] = manicura;
 
     return hotel.save()
       .then((data) => {
@@ -403,9 +403,9 @@ module.exports = {
     }
 
     const habitaciones = hotel['habitaciones'];
-    const baño = hotel['habitaciones']['spa']['baño'];
-    const peluqueria = hotel['habitaciones']['spa']['peluqueria'];
-    const manicura = hotel['habitaciones']['spa']['manicura'];
+    const baño = hotel['spa']['baño'];
+    const peluqueria = hotel['spa']['peluqueria'];
+    const manicura = hotel['spa']['manicura'];
     let perro_registrado = false;
 
     if (habitaciones.length) {
