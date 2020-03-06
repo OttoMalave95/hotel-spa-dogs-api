@@ -48,7 +48,7 @@ module.exports = {
 
     return {
       catidad_habitaciones: catidad_habitaciones,
-      catidad_baño: catidad_baño,
+      catidad_bano: catidad_baño,
       catidad_peluqueria: catidad_peluqueria,
       catidad_manicura: catidad_manicura
     }
