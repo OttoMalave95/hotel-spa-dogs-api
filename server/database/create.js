@@ -5,11 +5,13 @@ module.exports = {
   async crearPerro(perro) {
     if (Object.keys(perro).length < 5) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
+
+    perro['nombre'] = perro['nombre'].toUpperCase();
 
     const perroExiste = await Perro.findOne({ cedula: perro['cedula'], nombre: perro['nombre'] });
     if (perroExiste) {
@@ -48,7 +50,7 @@ module.exports = {
   async crearHotel(hotel) {
     if (Object.keys(hotel).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }

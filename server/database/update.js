@@ -6,17 +6,19 @@ module.exports = {
   async asignarHabitacionPerro(data) {
     if (Object.keys(data).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
 
+    data['nombre'] = data['nombre'].toUpperCase();
+
     const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
 
     if (!perro) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Perro no registrado",
       }
@@ -96,17 +98,19 @@ module.exports = {
   async asignarBañoPerro(data) {
     if (Object.keys(data).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
 
+    data['nombre'] = data['nombre'].toUpperCase();
+
     const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
 
     if (!perro) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Perro no registrado",
       }
@@ -186,17 +190,19 @@ module.exports = {
   async asignarPeluqueriaPerro(data) {
     if (Object.keys(data).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
 
+    data['nombre'] = data['nombre'].toUpperCase();
+
     const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
 
     if (!perro) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Perro no registrado",
       }
@@ -276,17 +282,19 @@ module.exports = {
   async asignarManicuraPerro(data) {
     if (Object.keys(data).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
 
+    data['nombre'] = data['nombre'].toUpperCase();
+
     const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
 
     if (!perro) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Perro no registrado",
       }
@@ -366,17 +374,19 @@ module.exports = {
   async retirarPerro(data) {
     if (Object.keys(data).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
 
+    data['nombre'] = data['nombre'].toUpperCase();
+
     const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
 
     if (!perro) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Perro no registrado",
       }
@@ -386,7 +396,7 @@ module.exports = {
 
     if (!hotel) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "No hay perros registrados en el hotel",
       }
@@ -464,7 +474,7 @@ module.exports = {
       });
     } else {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "El perro no esta registrado en el hotel",
       }

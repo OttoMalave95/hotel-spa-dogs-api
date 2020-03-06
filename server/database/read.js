@@ -7,7 +7,7 @@ module.exports = {
 
     if (!hotel) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "No hay perros registrados en el hotel",
       }
@@ -57,17 +57,19 @@ module.exports = {
   async cantidadRegistrosPerro(data) {
     if (Object.keys(data).length < 2) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Debe ingresar todos los datos",
       }
     }
 
+    data['nombre'] = data['nombre'].toUpperCase();
+
     const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
 
     if (!perro) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "Perro no registrado",
       }
@@ -86,7 +88,7 @@ module.exports = {
 
     if (!hotel) {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "No hay perros registrados en el hotel",
       }
@@ -127,7 +129,7 @@ module.exports = {
       }
     } else {
       throw {
-        status: 500,
+        status: 404,
         success: false,
         message: "No hay perros registrados en el hotel",
       }
