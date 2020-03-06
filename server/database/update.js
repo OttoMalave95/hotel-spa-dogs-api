@@ -35,7 +35,7 @@ module.exports = {
       hotel = nuevo_hotel.hotel;
     }
 
-    const habitaciones = hotel.habitaciones;
+    const habitaciones = hotel['habitaciones'];
 
     if (habitaciones.length) {
       habitaciones.forEach(habitacion => {
@@ -50,12 +50,13 @@ module.exports = {
 
       let perro_asignado = false;
 
+      const habitacion_disponible = habitaciones.find(item => item['disponible']);
+
       habitaciones.forEach(habitacion => {
-        if (habitacion['disponible']) {
+        if (habitacion_disponible && habitacion['numero'] == habitacion_disponible['numero']) {
           habitacion['perro'] = perro;
           habitacion['disponible'] = false;
           perro_asignado = true;
-          return true;
         }
       });
 
@@ -77,7 +78,7 @@ module.exports = {
     perro.registros += 1;
     await perro.save();
 
-    hotel.habitaciones = habitaciones;
+    hotel['habitaciones'] = habitaciones;
 
     return Hotel.updateOne(hotel)
       .then((data) => {
@@ -142,12 +143,13 @@ module.exports = {
 
       let perro_asignado = false;
 
+      const baño_disponible = baño.find(item => item['disponible']);
+
       baño.forEach(item => {
-        if (item['disponible']) {
+        if (baño_disponible && item['numero'] == baño_disponible['numero']) {
           item['perro'] = perro;
           item['disponible'] = false;
           perro_asignado = true;
-          return true;
         }
       });
 
@@ -234,12 +236,13 @@ module.exports = {
 
       let perro_asignado = false;
 
+      const peluqueria_disponible = peluqueria.find(item => item['disponible']);
+
       peluqueria.forEach(item => {
-        if (item['disponible']) {
+        if (peluqueria_disponible && item['numero'] == peluqueria_disponible['numero']) {
           item['perro'] = perro;
           item['disponible'] = false;
           perro_asignado = true;
-          return true;
         }
       });
 
@@ -326,12 +329,13 @@ module.exports = {
 
       let perro_asignado = false;
 
+      const manicura_disponible = manicura.find(item => item['disponible']);
+
       manicura.forEach(item => {
-        if (item['disponible']) {
+        if (manicura_disponible && item['numero'] == manicura_disponible['numero']) {
           item['perro'] = perro;
           item['disponible'] = false;
           perro_asignado = true;
-          return true;
         }
       });
 
