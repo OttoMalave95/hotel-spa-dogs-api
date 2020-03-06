@@ -6,7 +6,6 @@ const update = require("../database/update");
 const remove = require("../database/delete");
 
 api.route("/").get((req, res) => {
-  console.log('ruta raiz');
   res.send({ message: "Hola Mundo" });
 });
 
