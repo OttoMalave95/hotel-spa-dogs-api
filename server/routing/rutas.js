@@ -1,14 +1,18 @@
-var express = require("express");
-var api = express.Router();
-var read = require("../database/read");
-var create = require("../database/create");
-var update = require("../database/update");
-var remove = require("../database/delete");
+const express = require("express");
+const api = express.Router();
+const read = require("../database/read");
+const create = require("../database/create");
+const update = require("../database/update");
+const remove = require("../database/delete");
 
 api.route("/").get((req, res) => {
   console.log('ruta raiz');
   res.send({ message: "Hola Mundo" });
 });
+
+// api.route("/perro").post((req, res) => {
+
+// });
 
 api.route("/proyecto").post((req, res) => {
   var proyecto = req.body;

@@ -1,10 +1,10 @@
 "use strict";
-var express = require("express");
-var body_parser = require("body-parser");
-var morgan = require("morgan");
-var rutas_api = require('./routing/rutas');
+const express = require("express");
+const body_parser = require("body-parser");
+const morgan = require("morgan");
+const rutas_api = require('./routing/rutas');
 
-var app = express();
+const app = express();
 
 app.use(morgan("tiny"));
 
