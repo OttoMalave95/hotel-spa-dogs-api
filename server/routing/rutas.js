@@ -19,7 +19,7 @@ api.route("/perros").post((req, res) => {
     });
 });
 
-api.route("/hotel/asignar-habitacion-perro").put((req, res) => {
+api.route("/hotel/asignar-habitacion-perro").post((req, res) => {
   update.asignarHabitacionPerro(req.body)
     .then((data) => {
       res.send(data);
