@@ -29,7 +29,7 @@ api.route("/hotel/asignar-habitacion-perro").post((req, res) => {
     });
 });
 
-api.route("/spa/asignar-baño-perro").put((req, res) => {
+api.route("/spa/asignar-bano-perro").post((req, res) => {
   update.asignarBañoPerro(req.body)
     .then((data) => {
       res.send(data);
@@ -39,7 +39,7 @@ api.route("/spa/asignar-baño-perro").put((req, res) => {
     });
 });
 
-api.route("/spa/asignar-peluqueria-perro").put((req, res) => {
+api.route("/spa/asignar-peluqueria-perro").post((req, res) => {
   update.asignarPeluqueriaPerro(req.body)
     .then((data) => {
       res.send(data);
@@ -49,7 +49,7 @@ api.route("/spa/asignar-peluqueria-perro").put((req, res) => {
     });
 });
 
-api.route("/spa/asignar-manicura-perro").put((req, res) => {
+api.route("/spa/asignar-manicura-perro").post((req, res) => {
   update.asignarManicuraPerro(req.body)
     .then((data) => {
       res.send(data);
@@ -59,7 +59,7 @@ api.route("/spa/asignar-manicura-perro").put((req, res) => {
     });
 });
 
-api.route("/retirar-perro").delete((req, res) => {
+api.route("/retirar-perro").post((req, res) => {
   remove.retirarPerro(req.body)
     .then((data) => {
       res.send(data);
