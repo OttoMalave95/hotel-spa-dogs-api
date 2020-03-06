@@ -18,7 +18,7 @@ module.exports = {
       throw {
         status: 500,
         success: false,
-        message: "Perro no resgistrado",
+        message: "Perro no registrado",
       }
     }
 
@@ -82,6 +82,276 @@ module.exports = {
         return {
           hotel: data,
           message: "Perro asginado a una habitación"
+        };
+      })
+      .catch((err) => {
+        throw {
+          status: 500,
+          success: false,
+          message: err.message,
+        }
+      });
+  },
+
+  async asignarBañoPerro(data) {
+    if (Object.keys(data).length < 2) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Debe ingresar todos los datos",
+      }
+    }
+
+    const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
+
+    if (!perro) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Perro no registrado",
+      }
+    }
+
+    let hotel = await Hotel.findOne({});
+
+    if (!hotel) {
+      let data = {
+        nombre: "Hotel de Perros",
+        rif: "1234"
+      }
+      const nuevo_hotel = await create.crearHotel(data);
+      hotel = nuevo_hotel.hotel;
+    }
+
+    const baño = hotel['habitaciones']['spa']['baño'];
+
+    if (baño.length) {
+      baño.forEach(item => {
+        if (item['perro'] && item['perro']['cedula'] == perro['cedula'] && item['perro']['nombre'] == perro['nombre']) {
+          throw {
+            status: 500,
+            success: false,
+            message: "El perro ya tiene asignado un baño",
+          }
+        }
+      });
+
+      let perro_asignado = false;
+
+      baño.forEach(item => {
+        if (item['disponible']) {
+          item['perro'] = perro;
+          item['disponible'] = false;
+          perro_asignado = true;
+          break;
+        }
+      });
+
+      if (!perro_asignado) {
+        baño.push({
+          "perro": perro,
+          "disponible": false,
+          "numero": baño.length + 1
+        });
+      }
+    } else {
+      baño.push({
+        "perro": perro,
+        "disponible": false,
+        "numero": 1
+      });
+    }
+
+    perro.registros += 1;
+    await perro.save();
+
+    hotel['habitaciones']['spa']['baño'] = baño;
+
+    return hotel.save()
+      .then((data) => {
+        return {
+          hotel: data,
+          message: "Perro asginado a un baño"
+        };
+      })
+      .catch((err) => {
+        throw {
+          status: 500,
+          success: false,
+          message: err.message,
+        }
+      });
+  },
+
+  async asignarPeluqueriaPerro(data) {
+    if (Object.keys(data).length < 2) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Debe ingresar todos los datos",
+      }
+    }
+
+    const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
+
+    if (!perro) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Perro no registrado",
+      }
+    }
+
+    let hotel = await Hotel.findOne({});
+
+    if (!hotel) {
+      let data = {
+        nombre: "Hotel de Perros",
+        rif: "1234"
+      }
+      const nuevo_hotel = await create.crearHotel(data);
+      hotel = nuevo_hotel.hotel;
+    }
+
+    const peluqueria = hotel['habitaciones']['spa']['peluqueria'];
+
+    if (peluqueria.length) {
+      peluqueria.forEach(item => {
+        if (item['perro'] && item['perro']['cedula'] == perro['cedula'] && item['perro']['nombre'] == perro['nombre']) {
+          throw {
+            status: 500,
+            success: false,
+            message: "El perro ya esta asignado en la peluqueria",
+          }
+        }
+      });
+
+      let perro_asignado = false;
+
+      peluqueria.forEach(item => {
+        if (item['disponible']) {
+          item['perro'] = perro;
+          item['disponible'] = false;
+          perro_asignado = true;
+          break;
+        }
+      });
+
+      if (!perro_asignado) {
+        peluqueria.push({
+          "perro": perro,
+          "disponible": false,
+          "numero": peluqueria.length + 1
+        });
+      }
+    } else {
+      peluqueria.push({
+        "perro": perro,
+        "disponible": false,
+        "numero": 1
+      });
+    }
+
+    perro.registros += 1;
+    await perro.save();
+
+    hotel['habitaciones']['spa']['peluqueria'] = peluqueria;
+
+    return hotel.save()
+      .then((data) => {
+        return {
+          hotel: data,
+          message: "Perro asginado en la peluqueria"
+        };
+      })
+      .catch((err) => {
+        throw {
+          status: 500,
+          success: false,
+          message: err.message,
+        }
+      });
+  },
+
+  async asignarManicuraPerro(data) {
+    if (Object.keys(data).length < 2) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Debe ingresar todos los datos",
+      }
+    }
+
+    const perro = await Perro.findOne({ cedula: data['cedula'], nombre: data['nombre'] });
+
+    if (!perro) {
+      throw {
+        status: 500,
+        success: false,
+        message: "Perro no registrado",
+      }
+    }
+
+    let hotel = await Hotel.findOne({});
+
+    if (!hotel) {
+      let data = {
+        nombre: "Hotel de Perros",
+        rif: "1234"
+      }
+      const nuevo_hotel = await create.crearHotel(data);
+      hotel = nuevo_hotel.hotel;
+    }
+
+    const manicura = hotel['habitaciones']['spa']['manicura'];
+
+    if (manicura.length) {
+      manicura.forEach(item => {
+        if (item['perro'] && item['perro']['cedula'] == perro['cedula'] && item['perro']['nombre'] == perro['nombre']) {
+          throw {
+            status: 500,
+            success: false,
+            message: "El perro ya esta asignado en la manicura",
+          }
+        }
+      });
+
+      let perro_asignado = false;
+
+      manicura.forEach(item => {
+        if (item['disponible']) {
+          item['perro'] = perro;
+          item['disponible'] = false;
+          perro_asignado = true;
+          break;
+        }
+      });
+
+      if (!perro_asignado) {
+        manicura.push({
+          "perro": perro,
+          "disponible": false,
+          "numero": manicura.length + 1
+        });
+      }
+    } else {
+      manicura.push({
+        "perro": perro,
+        "disponible": false,
+        "numero": 1
+      });
+    }
+
+    perro.registros += 1;
+    await perro.save();
+
+    hotel['habitaciones']['spa']['manicura'] = manicura;
+
+    return hotel.save()
+      .then((data) => {
+        return {
+          hotel: data,
+          message: "Perro asginado en la manicura"
         };
       })
       .catch((err) => {

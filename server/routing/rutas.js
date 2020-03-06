@@ -29,6 +29,36 @@ api.route("/hotel/asignar-habitacion-perro").put((req, res) => {
     });
 });
 
+api.route("/spa/asignar-baño-perro").put((req, res) => {
+  update.asignarBañoPerro(req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(err.status).send(err);
+    });
+});
+
+api.route("/spa/asignar-peluqueria-perro").put((req, res) => {
+  update.asignarPeluqueriaPerro(req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(err.status).send(err);
+    });
+});
+
+api.route("/spa/asignar-manicura-perro").put((req, res) => {
+  update.asignarManicuraPerro(req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(err.status).send(err);
+    });
+});
+
 api.route("/retirar-perro").put((req, res) => {
   update.retirarPerro(req.body)
     .then((data) => {
